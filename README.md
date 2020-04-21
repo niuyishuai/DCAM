@@ -11,7 +11,7 @@ There are two version of DCAM. The version with postfix `poly` is particularly d
 ## Citation
 
 ```
-@Misc{Polylab,
+@Misc{DCAM,
 	title = {DCAM --  A Matlab modeling and optimization toolbox for dc program.},
 	author = {Yi-Shuai Niu},	
 	year = {2016},
