@@ -38,7 +38,7 @@ classdef dcfuncpoly < matlab.mixin.Copyable
             % where g and h are convex functions, and x must be a yalmip variable defined by sdpvar.
             % you can use obj.g, obj.h and obj.x to modify the class object.
             % dh is the gradient of h, if dh is not provided by user, the
-            % gradient will be computed by yalmip.
+            % gradient will be computed.
             % PS: Currently, for nonpolynomial function h, dh must be provided.
             if nargin == 0 % default constructor with no args
                 obj.f=[];
@@ -62,7 +62,7 @@ classdef dcfuncpoly < matlab.mixin.Copyable
         end
         function disp(obj)
             fprintf('----------------------------------\n')
-            fprintf('dc function with %d vaiables.\n',obj.nvars);
+            fprintf('DC function with %d vaiables.\n',obj.nvars);
             fprintf('----------------------------------\n')
         end
         
@@ -155,27 +155,36 @@ classdef dcfuncpoly < matlab.mixin.Copyable
             val = obj.gradg.eval(xval);
         end
         % evaluate approximate gradient of g at xval
-        function val = evalapproxgradg(obj,xval)
+        function val = evalapproxgradg(obj,xval,delta)
             func=@(x)obj.evalg(x);
-            val = numgrad(func,xval);
+            if nargin < 3
+                delta=0.01;
+            end
+            val = numgrad(func,xval,delta);
         end
         % evaluate gradient of h at xval
         function val = evalgradh(obj,xval)
             val = obj.gradh.eval(xval);
         end
         % evaluate approximate gradient of h at xval
-        function val = evalapproxgradh(obj,xval)
+        function val = evalapproxgradh(obj,xval,delta)
             func=@(x)obj.evalh(x);
-            val = numgrad(func,xval);
+            if nargin < 3
+                delta=0.01;
+            end
+            val = numgrad(func,xval,delta);
         end
         % evaluate gradient of f at xval
         function val = evalgradf(obj,xval)
             val = obj.gradf.eval(xval);
         end
         % evaluate approximate gradient of f at xval
-        function val = evalapproxgradf(obj,xval)
+        function val = evalapproxgradf(obj,xval,delta)
             func=@(x)obj.evalf(x);
-            val = numgrad(func,xval);
+            if nargin < 3
+                delta=0.01;
+            end
+            val = numgrad(func,xval,delta);
         end
         % evaluate hessian of g at xval
         function val = evalhesseg(obj,xval)

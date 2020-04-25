@@ -38,7 +38,7 @@ classdef dcppoly < matlab.mixin.Copyable
         function disp(obj)
             % display function of dcp
             fprintf('----------------------------------\n')
-            fprintf('dc programming problem:\n%d variable(s) and %d constraint(s).\n',obj.nvars, obj.ncons);
+            fprintf('DC programming problem with %d variable(s) and %d constraint(s).\n',obj.nvars, obj.ncons);
             fprintf('----------------------------------\n')
         end
         
