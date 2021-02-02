@@ -6,7 +6,10 @@ This project is supported by the National Natural Science Foundation of China (G
 ## Instruction
 This toolbox provides three main classes: DC function class (`dcfunc`), DC programming problem class (`dcp`), and DCA class (`dca`). You can use these classes to model and solve a DC programming problem within few lines of codes. 
 
-There are two version of DCAM. The version with postfix `poly` is particularly designed for polynomial optimization using [POLYLAB](https://github.com/niuyishuai/Polylab) toolbox. The version without postfix is used for general DC programming models. 
+There are two version of DCAM. The version with postfix `poly` is particularly designed for polynomial optimization using [POLYLAB](https://github.com/niuyishuai/Polylab) toolbox. The version without postfix is used for general DC programming models, and [Yalmip](https://github.com/yalmip/yalmip.github.io) is required. 
+
+## Samples
+See test samples in test folder.
 
 ## Citation
 
