@@ -29,12 +29,12 @@ F=dcfunc(x,g,h)
 C = [-10<=x<=5; sum(x)==2];
 
 % create a dc problem
-mydcp_sp=dcp(F,C)
+mydcp=dcp(F,C)
 
 %% solve problem using classical DCA
 x0=ones(n,1);
 % you can set initial point x0 in second argument of dca, or use default random initialization
-mydca = dca(mydcp_sp,x0);
+mydca = dca(mydcp,x0);
 % your can set parameters for dca or using default parameters
 mydca.plot=1; % 1 for plot, 0 non
 mydca.plotlinetype='b-o'; % set line style in plot
